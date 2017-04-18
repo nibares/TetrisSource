@@ -7,8 +7,6 @@
 
 #include "Game.h"
 
-namespace PlaceDescriptionService {
-
 Board::Board() {
 	// TODO Auto-generated constructor stub
 
@@ -18,4 +16,7 @@ Board::~Board() {
 	// TODO Auto-generated destructor stub
 }
 
-} /* namespace PlaceDescriptionService */
+Game::start(){
+
+ //   board
+}
