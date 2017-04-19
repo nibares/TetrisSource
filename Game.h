@@ -10,9 +10,12 @@
 
 class Board {
 public:
+    char board[3][3];
+
 	bool isEmpty();
 	Board();
-	virtual ~Board();
+    Board(int BoardColumns,int BoardRows);
+    virtual ~Board();
 };
 
 class Game {

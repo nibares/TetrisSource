@@ -9,11 +9,11 @@
 #include "catch.hpp"
 #include "Game.h"
 
-SCENARIO("Have a 1x1 block fall down.", "[TetrisFallingBlocks]"){
+SCENARIO("Have a 3x3 Board.", "[TetrisFallingBlocks]"){
 
 	Game game;
 
-	GIVEN("A game board"){
+    GIVEN("A 3 by 3 game board"){
 
 		WHEN("The game start"){
 			game.start();
@@ -23,7 +23,4 @@ SCENARIO("Have a 1x1 block fall down.", "[TetrisFallingBlocks]"){
 			}
 		}
 	}
-
 }
-
-
