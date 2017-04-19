@@ -24,3 +24,19 @@ SCENARIO("Have a 3x3 Board.", "[TetrisFallingBlocks]"){
 		}
 	}
 }
+
+SCENARIO("There are no falling blocks in the board.", "[TetrisFallingBlocks]"){
+
+    Game game;
+
+    GIVEN("A 3 by 3 game board"){
+
+        WHEN("The game start"){
+            game.start();
+
+            THEN ("The board has no falling blocks."){
+                REQUIRE(game.board.hasFalling()==false);
+            }
+        }
+    }
+}

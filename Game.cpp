@@ -22,11 +22,27 @@ Board::~Board() {
 }
 
 bool Board::isEmpty() {
-    return true;
+    bool result = true;
+
+    for(int i=0;i==3;i++){
+        for(int j=0;j==3;j++){
+            if(board[i][j]!=' '){
+                result = false;
+            };
+        }
+    }
+
+    return result;
+
 }
 
-void Game::start(){
+bool Board::hasFalling(){
+    return hasFallingBlocks;
+}
+    ;
 
+void Game::start(){
+    board.hasFallingBlocks = false;
 
 }
 

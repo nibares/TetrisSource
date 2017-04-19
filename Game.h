@@ -11,7 +11,9 @@
 class Board {
 public:
     char board[3][3];
+    bool hasFallingBlocks;
 
+    bool hasFalling();
 	bool isEmpty();
 	Board();
     Board(int BoardColumns,int BoardRows);
