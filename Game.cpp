@@ -17,7 +17,7 @@ Board::~Board() {
 }
 
 bool Board::isEmpty() {
-    return false;
+    return true;
 }
 
 void Game::start(){
@@ -29,6 +29,6 @@ Game::Game(){
 
 };
 
-Game:::~Game(){
+Game::~Game(){
 
 };
