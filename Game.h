@@ -23,6 +23,6 @@ public:
 	void start();
 	Game();
 	virtual ~Game();
-
+    bool boardIsEmpty();
 };
 #endif /* GAME_H_ */

@@ -16,7 +16,19 @@ Board::~Board() {
 	// TODO Auto-generated destructor stub
 }
 
-Game::start(){
-
- //   board
+bool Board::isEmpty() {
+    return false;
 }
+
+void Game::start(){
+
+
+}
+
+Game::Game(){
+
+};
+
+Game:::~Game(){
+
+};
