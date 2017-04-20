@@ -49,9 +49,9 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = TetrisBehaviour.cpp \
-		Game.cpp 
+		Board.cpp 
 OBJECTS       = TetrisBehaviour.o \
-		Game.o
+		Board.o
 DIST          = README.md \
 		../../Qt/5.8/gcc_64/mkspecs/features/spec_pre.prf \
 		../../Qt/5.8/gcc_64/mkspecs/common/unix.conf \
@@ -203,6 +203,7 @@ DIST          = README.md \
 		../../Qt/5.8/gcc_64/mkspecs/features/qt_config.prf \
 		../../Qt/5.8/gcc_64/mkspecs/linux-g++/qmake.conf \
 		../../Qt/5.8/gcc_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../Qt/5.8/gcc_64/mkspecs/features/exclusive_builds.prf \
 		../../Qt/5.8/gcc_64/mkspecs/features/toolchain.prf \
 		../../Qt/5.8/gcc_64/mkspecs/features/default_pre.prf \
@@ -221,8 +222,8 @@ DIST          = README.md \
 		../../Qt/5.8/gcc_64/mkspecs/features/exceptions.prf \
 		../../Qt/5.8/gcc_64/mkspecs/features/yacc.prf \
 		../../Qt/5.8/gcc_64/mkspecs/features/lex.prf \
-		TetrisTDD.pro Game.h TetrisBehaviour.cpp \
-		Game.cpp
+		TetrisTDD.pro Board.h TetrisBehaviour.cpp \
+		Board.cpp
 QMAKE_TARGET  = TetrisTDD
 DESTDIR       = 
 TARGET        = TetrisTDD
@@ -384,6 +385,7 @@ Makefile: TetrisTDD.pro ../../Qt/5.8/gcc_64/mkspecs/linux-g++/qmake.conf ../../Q
 		../../Qt/5.8/gcc_64/mkspecs/features/qt_config.prf \
 		../../Qt/5.8/gcc_64/mkspecs/linux-g++/qmake.conf \
 		../../Qt/5.8/gcc_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../Qt/5.8/gcc_64/mkspecs/features/exclusive_builds.prf \
 		../../Qt/5.8/gcc_64/mkspecs/features/toolchain.prf \
 		../../Qt/5.8/gcc_64/mkspecs/features/default_pre.prf \
@@ -556,6 +558,7 @@ Makefile: TetrisTDD.pro ../../Qt/5.8/gcc_64/mkspecs/linux-g++/qmake.conf ../../Q
 ../../Qt/5.8/gcc_64/mkspecs/features/qt_config.prf:
 ../../Qt/5.8/gcc_64/mkspecs/linux-g++/qmake.conf:
 ../../Qt/5.8/gcc_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../../Qt/5.8/gcc_64/mkspecs/features/exclusive_builds.prf:
 ../../Qt/5.8/gcc_64/mkspecs/features/toolchain.prf:
 ../../Qt/5.8/gcc_64/mkspecs/features/default_pre.prf:
@@ -592,8 +595,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../Qt/5.8/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents Game.h $(DISTDIR)/
-	$(COPY_FILE) --parents TetrisBehaviour.cpp Game.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents Board.h $(DISTDIR)/
+	$(COPY_FILE) --parents TetrisBehaviour.cpp Board.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -639,11 +642,11 @@ compiler_clean: compiler_moc_predefs_clean
 
 ####### Compile
 
-TetrisBehaviour.o: TetrisBehaviour.cpp Game.h
+TetrisBehaviour.o: TetrisBehaviour.cpp Board.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o TetrisBehaviour.o TetrisBehaviour.cpp
 
-Game.o: Game.cpp Game.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Game.o Game.cpp
+Board.o: Board.cpp Board.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Board.o Board.cpp
 
 ####### Install
 

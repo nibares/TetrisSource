@@ -5,7 +5,7 @@
  *      Author: nico
  */
 
-#include "Game.h"
+#include "Board.h"
 #include <string.h>
 
 Board::Board() {
@@ -37,19 +37,6 @@ bool Board::isEmpty() {
 }
 
 bool Board::hasFalling(){
+    hasFallingBlocks = false;
     return hasFallingBlocks;
 }
-    ;
-
-void Game::start(){
-    board.hasFallingBlocks = false;
-
-}
-
-Game::Game(){
-
-};
-
-Game::~Game(){
-
-};

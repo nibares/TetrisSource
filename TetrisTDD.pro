@@ -4,15 +4,15 @@
 #TARGET = TetrisTDD
 
 HEADERS = \
+    Board.h
 #   $$PWD/TetrisSource/Game.h \
-    Game.h
 
 SOURCES = \
 #   $$PWD/TetrisSource/Game.cpp \
 #   $$PWD/TetrisSource/README.md \
 #   $$PWD/TetrisSource/TetrisBehaviour.cpp \
     TetrisBehaviour.cpp \
-    Game.cpp
+    Board.cpp
 
 INCLUDEPATH = \
 #    $$PWD/TetrisSource

@@ -5,8 +5,8 @@
  *      Author: nico
  */
 
-#ifndef GAME_H_
-#define GAME_H_
+#ifndef BOARD_H_
+#define BOARD_H_
 
 class Board {
 public:
@@ -20,12 +20,7 @@ public:
     virtual ~Board();
 };
 
-class Game {
-public:
-    Board board;
 
-	void start();
-	Game();
-	virtual ~Game();
-};
-#endif /* GAME_H_ */
+
+
+#endif /* BOARD_H_ */
