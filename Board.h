@@ -10,13 +10,19 @@
 
 class Board {
 public:
+    const char EMPTY = ' ';
+    const int MAXROW=3, MAXCOLUMN=3;
+
     char board[3][3];
+
     bool hasFallingBlocks;
 
     bool hasFalling();
-	bool isEmpty();
+    bool isEmpty();
+    void drop(char oneBlock);
+    void tick();
+
 	Board();
-    Board(int BoardColumns,int BoardRows);
     virtual ~Board();
 };
 
