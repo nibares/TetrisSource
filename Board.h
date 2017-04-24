@@ -15,6 +15,7 @@ public:
 
     char board[3][3];
     char currentBlock;
+    const int FALLINGBLOCKCOLUMN=1;
 
     bool hasFallingBlocks;
 
