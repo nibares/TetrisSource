@@ -84,3 +84,36 @@ SCENARIO("After a tick the block keep falling through the middle center.", "[Tet
         }
     }
 }
+
+SCENARIO("At most only one block must fall at the same time.", "[TetrisFallingBlocks]"){
+
+    GIVEN("A 3 by 3 board"){
+        Board board;
+
+        WHEN("a 1 by 1 block is falling AND a new block is dropped."){
+            board.drop('X');
+            board.tick();
+
+            THEN ("I should receive an error for this."){
+                REQUIRE_THROWS_WITH(board.drop('Y'), Catch::Matchers::Contains("A block is already falling! Not possible to drop another block."));
+            }
+        }
+    }
+}
+
+SCENARIO("When a block reaches the bottom stops.", "[TetrisFallingBlocks]"){
+
+    GIVEN("A 3 by 3 board"){
+        Board board;
+
+        WHEN("a 1 by 1 block is falling AND reaches the bottom."){
+            board.drop('X');
+            board.tick();
+            board.tick();
+
+            THEN ("Then the block stops."){
+                REQUIRE(!board.hasFalling());
+            }
+        }
+    }
+}

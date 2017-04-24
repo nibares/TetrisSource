@@ -14,6 +14,7 @@ public:
     const int MAXROW=3, MAXCOLUMN=3;
 
     char board[3][3];
+    char currentBlock;
 
     bool hasFallingBlocks;
 
