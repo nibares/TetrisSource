@@ -101,6 +101,22 @@ SCENARIO("At most only one block must fall at the same time.", "[TetrisFallingBl
     }
 }
 
+SCENARIO("When a block reaches the last cell should give the user the choice to move the block.", "[TetrisFallingBlocks]"){
+
+    GIVEN("A 3 by 3 board"){
+        Board board;
+
+        WHEN("a 1 by 1 block is falling AND reaches the last row."){
+            board.drop('X');
+            board.tick();
+            board.tick();
+            THEN ("The block still can be moved."){
+                REQUIRE(board.hasFalling());
+            }
+        }
+    }
+}
+
 SCENARIO("When a block reaches the bottom stops.", "[TetrisFallingBlocks]"){
 
     GIVEN("A 3 by 3 board"){
@@ -110,7 +126,7 @@ SCENARIO("When a block reaches the bottom stops.", "[TetrisFallingBlocks]"){
             board.drop('X');
             board.tick();
             board.tick();
-
+            board.tick();
             THEN ("Then the block stops."){
                 REQUIRE(!board.hasFalling());
             }

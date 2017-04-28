@@ -9,15 +9,18 @@
 #define BOARD_H_
 
 class Board {
-public:
+private:
     const char EMPTY = ' ';
     const int MAXROW=3, MAXCOLUMN=3;
-
-    char board[3][3];
-    char currentBlock;
     const int FALLINGBLOCKCOLUMN=1;
 
+
+    char currentBlock;
+
     bool hasFallingBlocks;
+
+public:
+    char board[3][3];
 
     bool hasFalling();
     bool isEmpty();

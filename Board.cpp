@@ -72,7 +72,7 @@ void Board::tick(){
 
     *board[0] = EMPTY;
 
-    if (board[MAXROW-1][FALLINGBLOCKCOLUMN]==currentBlock){
-        hasFallingBlocks = false;
-    };
+//    if (board[MAXROW-1][FALLINGBLOCKCOLUMN]==currentBlock){
+//        hasFallingBlocks = false;
+//    };
 }
