@@ -18,7 +18,7 @@ Board::Board() {
 
     hasFallingBlocks = false;
 
-    isMoving = false;
+    currentBlock.changeStatus(currentBlock.stopped);
     currentColumn = 0;
 }
 
@@ -53,13 +53,14 @@ bool Board::hasFalling(){
 void Board::drop(char oneBlock){
     int row=0,col=FALLINGBLOCKCOLUMN;
 
-    if ((oneBlock != currentBlock) and !isMoving){
+    if ((oneBlock != currentBlock.blockChar) and !currentBlock.isMoving()){
         hasFallingBlocks = false;
     }
 
     if (hasFallingBlocks == false){
-        currentBlock = oneBlock;
-        isMoving = true;
+        currentBlock.blockChar = oneBlock;
+        currentBlock.changeStatus(currentBlock.moving);
+
         hasFallingBlocks = true;
         board[row][col] = oneBlock;
     }
@@ -83,7 +84,7 @@ void Board::tick(){
 
     currentColumn++;
     if (currentColumn == MAXCOLUMN){
-        isMoving = false;
+        currentBlock.changeStatus(currentBlock.stopped);
     }
 
 }

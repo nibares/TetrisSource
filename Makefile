@@ -222,7 +222,8 @@ DIST          = README.md \
 		../../Qt/5.8/gcc_64/mkspecs/features/exceptions.prf \
 		../../Qt/5.8/gcc_64/mkspecs/features/yacc.prf \
 		../../Qt/5.8/gcc_64/mkspecs/features/lex.prf \
-		TetrisTDD.pro Board.h TetrisBehaviour.cpp \
+		TetrisTDD.pro Board.h \
+		Block.h TetrisBehaviour.cpp \
 		Board.cpp
 QMAKE_TARGET  = TetrisTDD
 DESTDIR       = 
@@ -595,7 +596,7 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../Qt/5.8/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents Board.h $(DISTDIR)/
+	$(COPY_FILE) --parents Board.h Block.h $(DISTDIR)/
 	$(COPY_FILE) --parents TetrisBehaviour.cpp Board.cpp $(DISTDIR)/
 
 
@@ -642,10 +643,12 @@ compiler_clean: compiler_moc_predefs_clean
 
 ####### Compile
 
-TetrisBehaviour.o: TetrisBehaviour.cpp Board.h
+TetrisBehaviour.o: TetrisBehaviour.cpp Board.h \
+		Block.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o TetrisBehaviour.o TetrisBehaviour.cpp
 
-Board.o: Board.cpp Board.h
+Board.o: Board.cpp Board.h \
+		Block.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Board.o Board.cpp
 
 ####### Install

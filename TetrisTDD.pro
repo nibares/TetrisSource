@@ -4,7 +4,8 @@
 #TARGET = TetrisTDD
 
 HEADERS = \
-    Board.h
+    Board.h \
+    Block.h
 #   $$PWD/TetrisSource/Game.h \
 
 SOURCES = \
