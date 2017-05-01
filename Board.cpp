@@ -9,15 +9,16 @@
 #include <string.h>
 
 Board::Board() {
-	// TODO Auto-generated constructor stub
 
     for(int row=0;row<MAXROW;row++){
         for(int col=0;col<MAXCOLUMN;col++){
             board[row][col]= EMPTY;
         }
-    } //Cerramos el i
+    }
 
     hasFallingBlocks = false;
+
+    currentColumn = 0;
 }
 
 Board::~Board() {
@@ -40,6 +41,10 @@ bool Board::isEmpty() {
 }
 
 bool Board::hasFalling(){
+
+    if (currentColumn == MAXCOLUMN){
+        hasFallingBlocks = false;
+    }
 
     return hasFallingBlocks;
 }
@@ -71,6 +76,8 @@ void Board::tick(){
     }
 
     *board[0] = EMPTY;
+
+    currentColumn++;
 
 //    if (board[MAXROW-1][FALLINGBLOCKCOLUMN]==currentBlock){
 //        hasFallingBlocks = false;

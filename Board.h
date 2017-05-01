@@ -16,6 +16,7 @@ private:
 
 
     char currentBlock;
+    int currentColumn;
 
     bool hasFallingBlocks;
 
