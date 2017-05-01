@@ -18,6 +18,7 @@ Board::Board() {
 
     hasFallingBlocks = false;
 
+    isMoving = false;
     currentColumn = 0;
 }
 
@@ -51,17 +52,20 @@ bool Board::hasFalling(){
 
 void Board::drop(char oneBlock){
     int row=0,col=FALLINGBLOCKCOLUMN;
-    if (hasFallingBlocks == false){
 
+    if ((oneBlock != currentBlock) and !isMoving){
+        hasFallingBlocks = false;
+    }
+
+    if (hasFallingBlocks == false){
         currentBlock = oneBlock;
+        isMoving = true;
         hasFallingBlocks = true;
         board[row][col] = oneBlock;
-
     }
     else {
-        throw "A block is already falling! Not possible to drop another block.";
+            throw "A block is already falling! Not possible to drop another block.";
     }
-
 }
 
 void Board::tick(){
@@ -78,8 +82,8 @@ void Board::tick(){
     *board[0] = EMPTY;
 
     currentColumn++;
+    if (currentColumn == MAXCOLUMN){
+        isMoving = false;
+    }
 
-//    if (board[MAXROW-1][FALLINGBLOCKCOLUMN]==currentBlock){
-//        hasFallingBlocks = false;
-//    };
 }

@@ -133,3 +133,24 @@ SCENARIO("When a block reaches the bottom stops.", "[TetrisFallingBlocks]"){
         }
     }
 }
+
+SCENARIO("When another block falls inside another.", "[TetrisFallingBlocks]"){
+
+    GIVEN("A 3 by 3 board"){
+        Board board;
+
+        WHEN("a 1 by 1 block is falling AND then another falls above it."){
+            board.drop('X');
+            board.tick();
+            board.tick();
+            board.tick();
+
+            board.drop('Y');
+            board.tick();
+
+            THEN ("Then the block stops."){
+                REQUIRE(board.hasFalling());
+            }
+        }
+    }
+}

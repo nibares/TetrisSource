@@ -17,6 +17,7 @@ private:
 
     char currentBlock;
     int currentColumn;
+    bool isMoving;
 
     bool hasFallingBlocks;
 
