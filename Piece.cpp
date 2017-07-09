@@ -15,12 +15,7 @@ void Piece::rotateRight(){
     bool pieceCanvasOriginalState[3][3];
     bool pieceCanvasDestinationState[3][3];
 
-    for (int column = 0; column < MAXPIECECOLUMN; column++)
-    {
-        for (int row = 0; row < MAXPIECEROW; row++){
-            pieceCanvasOriginalState[column][row] = pieceCanvas[column][row];
-        }
-    }
+    copyPieceCanvas(pieceCanvas, pieceCanvasOriginalState);
 
     for (int column = 0; column < MAXPIECECOLUMN; column++)
     {
@@ -29,13 +24,7 @@ void Piece::rotateRight(){
         }
     }
 
-    for (int column = 0; column < MAXPIECECOLUMN; column++)
-    {
-        for (int row = 0; row < MAXPIECEROW; row++){
-            pieceCanvas[column][row] = pieceCanvasDestinationState[column][row];
-        }
-    }
-
+    copyPieceCanvas(pieceCanvasDestinationState, pieceCanvas);
 
 };
 
@@ -46,7 +35,16 @@ void Piece::clearPieceCanvas()
         for (int row = 0; row < MAXPIECEROW; row++){
                    pieceCanvas [column][row] = false;
         }
+    }
+}
 
+void Piece::copyPieceCanvas(const bool originCanvas[3][3], bool destinationCanvas[3][3]){
+
+    for (int column = 0; column < MAXPIECECOLUMN; column++)
+    {
+        for (int row = 0; row < MAXPIECEROW; row++){
+            destinationCanvas[column][row] = originCanvas[column][row];
+        }
     }
 
 }

@@ -4,6 +4,10 @@
 
 class Piece
 {
+private:
+    void clearPieceCanvas();
+    void copyPieceCanvas(const bool originCanvas[3][3], bool destinationCanvas[3][3]);
+
 public:
     const int MAXPIECEROW=3, MAXPIECECOLUMN=3;
 
@@ -11,7 +15,7 @@ public:
 
     void rotateRight();
 
-    void clearPieceCanvas();
+
 
     Piece();
     virtual ~Piece();
