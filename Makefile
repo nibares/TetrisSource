@@ -49,9 +49,11 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = TetrisBehaviour.cpp \
-		Board.cpp 
+		Board.cpp \
+		Piece.cpp 
 OBJECTS       = TetrisBehaviour.o \
-		Board.o
+		Board.o \
+		Piece.o
 DIST          = README.md \
 		../../Qt/5.8/gcc_64/mkspecs/features/spec_pre.prf \
 		../../Qt/5.8/gcc_64/mkspecs/common/unix.conf \
@@ -223,8 +225,10 @@ DIST          = README.md \
 		../../Qt/5.8/gcc_64/mkspecs/features/yacc.prf \
 		../../Qt/5.8/gcc_64/mkspecs/features/lex.prf \
 		TetrisTDD.pro Board.h \
-		Block.h TetrisBehaviour.cpp \
-		Board.cpp
+		Block.h \
+		Piece.h TetrisBehaviour.cpp \
+		Board.cpp \
+		Piece.cpp
 QMAKE_TARGET  = TetrisTDD
 DESTDIR       = 
 TARGET        = TetrisTDD
@@ -596,8 +600,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../Qt/5.8/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents Board.h Block.h $(DISTDIR)/
-	$(COPY_FILE) --parents TetrisBehaviour.cpp Board.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents Board.h Block.h Piece.h $(DISTDIR)/
+	$(COPY_FILE) --parents TetrisBehaviour.cpp Board.cpp Piece.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -650,6 +654,9 @@ TetrisBehaviour.o: TetrisBehaviour.cpp Board.h \
 Board.o: Board.cpp Board.h \
 		Block.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Board.o Board.cpp
+
+Piece.o: Piece.cpp Piece.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Piece.o Piece.cpp
 
 ####### Install
 

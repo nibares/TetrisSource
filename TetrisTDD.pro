@@ -5,7 +5,8 @@
 
 HEADERS = \
     Board.h \
-    Block.h
+    Block.h \
+    Piece.h
 #   $$PWD/TetrisSource/Game.h \
 
 SOURCES = \
@@ -13,7 +14,8 @@ SOURCES = \
 #   $$PWD/TetrisSource/README.md \
 #   $$PWD/TetrisSource/TetrisBehaviour.cpp \
     TetrisBehaviour.cpp \
-    Board.cpp
+    Board.cpp \
+    Piece.cpp
 
 INCLUDEPATH = \
 #    $$PWD/TetrisSource
