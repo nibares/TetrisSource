@@ -218,4 +218,36 @@ SCENARIO("Rotate piece right.", "[TetrisRotatingPiecesOfBlocks]"){
         }
     }
 }
+SCENARIO("Rotate piece left.", "[TetrisRotatingPiecesOfBlocks]"){
+
+    GIVEN("A 3 by 3 piece"){
+        Piece piece;
+        bool pieceRepresentation [3][3];
+        pieceRepresentation[0][0] = false;
+        pieceRepresentation[1][0] = false;
+        pieceRepresentation[2][0] = false;
+        pieceRepresentation[0][1] = true;
+        pieceRepresentation[1][1] = true;
+        pieceRepresentation[2][1] = false;
+        pieceRepresentation[0][2] = false;
+        pieceRepresentation[1][2] = false;
+        pieceRepresentation[2][2] = false;
+
+
+        WHEN("I rotate the piece."){
+            piece.rotateLeft();
+
+            THEN ("Piece looks rotated."){
+
+                for (int column = 0; column < 3; column++){
+                    for (int row = 0; row < 3; row++) {
+                        REQUIRE(piece.pieceCanvas[column][row] == pieceRepresentation[column][row]);
+                    }
+                }
+
+            }
+
+        }
+    }
+}
 

@@ -14,6 +14,7 @@ public:
     bool pieceCanvas[3][3];
 
     void rotateRight();
+    void rotateLeft();
 
 
 
