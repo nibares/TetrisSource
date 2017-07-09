@@ -3,48 +3,52 @@
 Piece::Piece()
 {
    // Piece();
+    clearPieceCanvas();
 
-    pieceCanvas[0][0] = false;
     pieceCanvas[1][0] = true;
-    pieceCanvas[2][0] = false;
-
-    pieceCanvas[0][1] = false;
     pieceCanvas[1][1] = true;
-    pieceCanvas[2][1] = false;
-
-    pieceCanvas[0][2] = false;
-    pieceCanvas[1][2] = false;
-    pieceCanvas[2][2] = false;
 
 }
 
 void Piece::rotateRight(){
 
-    bool pieceCanvasOriginalState[MAXCOLUMN][MAXROW];
+    bool pieceCanvasOriginalState[3][3];
     bool pieceCanvasDestinationState[3][3];
 
-    for (int column = 0; column < MAXCOLUMN; column++)
+    for (int column = 0; column < MAXPIECECOLUMN; column++)
     {
-        for (int row = 0; row < MAXROW; row++){
+        for (int row = 0; row < MAXPIECEROW; row++){
             pieceCanvasOriginalState[column][row] = pieceCanvas[column][row];
         }
     }
 
-    for (int column = 0; column < MAXCOLUMN; column++)
+    for (int column = 0; column < MAXPIECECOLUMN; column++)
     {
-        for (int row = 0; row < MAXROW; row++){
-            pieceCanvasDestinationState[column][row] =  pieceCanvasOriginalState[row][((MAXROW-1)-column)];
+        for (int row = 0; row < MAXPIECEROW; row++){
+            pieceCanvasDestinationState[column][row] =  pieceCanvasOriginalState[row][((MAXPIECEROW-1)-column)];
         }
     }
 
-    for (int column = 0; column < 3; column++)
+    for (int column = 0; column < MAXPIECECOLUMN; column++)
     {
-        for (int row = 0; row < 3; row++){
+        for (int row = 0; row < MAXPIECEROW; row++){
             pieceCanvas[column][row] = pieceCanvasDestinationState[column][row];
         }
     }
 
 
 };
+
+void Piece::clearPieceCanvas()
+{
+    for (int column = 0; column<MAXPIECECOLUMN; column++){
+
+        for (int row = 0; row < MAXPIECEROW; row++){
+                   pieceCanvas [column][row] = false;
+        }
+
+    }
+
+}
 
 Piece::~Piece(){};

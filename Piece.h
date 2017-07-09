@@ -5,11 +5,13 @@
 class Piece
 {
 public:
-    const int MAXROW=3, MAXCOLUMN=3;
+    const int MAXPIECEROW=3, MAXPIECECOLUMN=3;
 
     bool pieceCanvas[3][3];
 
     void rotateRight();
+
+    void clearPieceCanvas();
 
     Piece();
     virtual ~Piece();
