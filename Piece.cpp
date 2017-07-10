@@ -33,7 +33,7 @@ void Piece::createPiece(const int PieceColumnSize, const int PieceRowSize, const
     }
 
      copyPieceCanvas(NewPieceCanvas, pieceCanvas);
-
+     pieceCanvas = NewPieceCanvas;
 };
 
 void Piece::rotateRight(){
