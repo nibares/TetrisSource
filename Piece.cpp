@@ -32,11 +32,11 @@ void Piece::createPiece(const int PieceColumnSize, const int PieceRowSize, const
         pieceCanvas[i].resize(maxPieceRow);
     }
 
-     copyPieceCanvas(NewPieceCanvas, pieceCanvas);
+     //copyPieceCanvas(NewPieceCanvas, pieceCanvas);
      pieceCanvas = NewPieceCanvas;
 };
 
-void Piece::rotateRight(){
+void Piece::rotateLeft(){
 
     std::vector<std::vector<bool>>  pieceCanvasOriginalState;
     std::vector<std::vector<bool>>  pieceCanvasDestinationState;
@@ -57,7 +57,9 @@ void Piece::rotateRight(){
     int originColumnIndex = 0;
     int originRowIndex = 0;
 
-    copyPieceCanvas(pieceCanvas, pieceCanvasOriginalState);
+//    copyPieceCanvas(pieceCanvas, pieceCanvasOriginalState);
+    pieceCanvasOriginalState = pieceCanvas;
+
 
     for (int column = 0; column < maxPieceColumn; column++)
     {
@@ -69,11 +71,13 @@ void Piece::rotateRight(){
         }
     }
 
-    copyPieceCanvas(pieceCanvasDestinationState, pieceCanvas);
+//    copyPieceCanvas(pieceCanvasDestinationState, pieceCanvas);
+
+    pieceCanvas = pieceCanvasDestinationState;
 
 };
 
-void Piece::rotateLeft(){
+void Piece::rotateRight(){
      std::vector<std::vector<bool>> pieceCanvasOriginalState;
      std::vector<std::vector<bool>> pieceCanvasDestinationState;
 
@@ -92,7 +96,8 @@ void Piece::rotateLeft(){
     int originColumnIndex = 0;
     int originRowIndex = 0;
 
-     copyPieceCanvas(pieceCanvas, pieceCanvasOriginalState);
+     //copyPieceCanvas(pieceCanvas, pieceCanvasOriginalState);
+     pieceCanvasOriginalState = pieceCanvas;
 
      for (int column = 0; column < maxPieceColumn; column++)
      {
@@ -105,7 +110,8 @@ void Piece::rotateLeft(){
          }
      }
 
-     copyPieceCanvas(pieceCanvasDestinationState, pieceCanvas);
+     //copyPieceCanvas(pieceCanvasDestinationState, pieceCanvas);
+    pieceCanvas = pieceCanvasDestinationState;
 }
 
 void Piece::clearPieceCanvas()
