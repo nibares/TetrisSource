@@ -3,29 +3,68 @@
 Piece::Piece()
 {
    // Piece();
-    clearPieceCanvas();
 
-    pieceCanvas[1][0] = true;
-    pieceCanvas[1][1] = true;
+};
+
+void Piece::createPiece(const int PieceColumnSize, const int PieceRowSize){
+
+    maxPieceColumn = PieceColumnSize;
+    maxPieceRow = PieceRowSize;
+
+    pieceCanvas.resize(maxPieceColumn);
+
+    for (int i = 0; i<maxPieceColumn; i++){
+        pieceCanvas[i].resize(maxPieceRow);
+    }
+
+    clearPieceCanvas();
 
 }
 
+void Piece::createPiece(const int PieceColumnSize, const int PieceRowSize, const std::vector< std::vector<bool>> NewPieceCanvas){
+
+    maxPieceColumn = PieceColumnSize;
+    maxPieceRow = PieceRowSize;
+
+    pieceCanvas.resize(maxPieceColumn);
+
+    for (int i = 0; i<maxPieceColumn; i++){
+        pieceCanvas[i].resize(maxPieceRow);
+    }
+
+     copyPieceCanvas(NewPieceCanvas, pieceCanvas);
+
+};
+
 void Piece::rotateRight(){
 
-    bool pieceCanvasOriginalState[3][3];
-    bool pieceCanvasDestinationState[3][3];
+    std::vector<std::vector<bool>>  pieceCanvasOriginalState;
+    std::vector<std::vector<bool>>  pieceCanvasDestinationState;
+
+    pieceCanvasOriginalState.resize(maxPieceColumn);
+
+    for (int i = 0; i<maxPieceColumn; i++){
+        pieceCanvasOriginalState[i].resize(maxPieceRow);
+    }
+
+    pieceCanvasDestinationState.resize(maxPieceColumn);
+
+    for (int i = 0; i<maxPieceColumn; i++){
+        pieceCanvasDestinationState[i].resize(maxPieceRow);
+    }
+
 
     int originColumnIndex = 0;
     int originRowIndex = 0;
 
     copyPieceCanvas(pieceCanvas, pieceCanvasOriginalState);
 
-    for (int column = 0; column < MAXPIECECOLUMN; column++)
+    for (int column = 0; column < maxPieceColumn; column++)
     {
-        for (int row = 0; row < MAXPIECEROW; row++){
+        for (int row = 0; row < maxPieceRow; row++){
 
             originColumnIndex = row;
-            originRowIndex = (MAXPIECEROW-1) - column;
+            originRowIndex = (maxPieceRow-1) - column;
             pieceCanvasDestinationState[column][row] =  pieceCanvasOriginalState[originColumnIndex][originRowIndex];
         }
     }
@@ -35,18 +74,31 @@ void Piece::rotateRight(){
 };
 
 void Piece::rotateLeft(){
-    bool pieceCanvasOriginalState[3][3];
-    bool pieceCanvasDestinationState[3][3];
+     std::vector<std::vector<bool>> pieceCanvasOriginalState;
+     std::vector<std::vector<bool>> pieceCanvasDestinationState;
+
+     pieceCanvasOriginalState.resize(maxPieceColumn);
+
+     for (int i = 0; i<maxPieceColumn; i++){
+         pieceCanvasOriginalState[i].resize(maxPieceRow);
+     }
+
+     pieceCanvasDestinationState.resize(maxPieceColumn);
+
+     for (int i = 0; i<maxPieceColumn; i++){
+         pieceCanvasDestinationState[i].resize(maxPieceRow);
+     }
+
     int originColumnIndex = 0;
     int originRowIndex = 0;
 
      copyPieceCanvas(pieceCanvas, pieceCanvasOriginalState);
 
-     for (int column = 0; column < MAXPIECECOLUMN; column++)
+     for (int column = 0; column < maxPieceColumn; column++)
      {
-         for (int row = 0; row < MAXPIECEROW; row++){
+         for (int row = 0; row < maxPieceRow; row++){
 
-             originColumnIndex = (MAXPIECECOLUMN - 1) - row;
+             originColumnIndex = (maxPieceColumn - 1) - row;
              originRowIndex = column;
 
              pieceCanvasDestinationState[column][row] =  pieceCanvasOriginalState[originColumnIndex][originRowIndex];
@@ -58,19 +110,18 @@ void Piece::rotateLeft(){
 
 void Piece::clearPieceCanvas()
 {
-    for (int column = 0; column<MAXPIECECOLUMN; column++){
-
-        for (int row = 0; row < MAXPIECEROW; row++){
-                   pieceCanvas [column][row] = false;
+    for (int column = 0; column<maxPieceColumn; column++){
+        for (int row = 0; row < maxPieceRow; row++){
+                   pieceCanvas[column][row] = false;
         }
     }
 }
 
-void Piece::copyPieceCanvas(const bool originCanvas[3][3], bool destinationCanvas[3][3]){
+void Piece::copyPieceCanvas(const std::vector<std::vector<bool>> originCanvas, std::vector<std::vector<bool>> destinationCanvas){
 
-    for (int column = 0; column < MAXPIECECOLUMN; column++)
+    for (int column = 0; column < maxPieceColumn; column++)
     {
-        for (int row = 0; row < MAXPIECEROW; row++){
+        for (int row = 0; row < maxPieceRow; row++){
             destinationCanvas[column][row] = originCanvas[column][row];
         }
     }

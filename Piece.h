@@ -1,17 +1,23 @@
 #ifndef PIECE_H
 #define PIECE_H
 
+#include <vector>
 
 class Piece
 {
 private:
     void clearPieceCanvas();
-    void copyPieceCanvas(const bool originCanvas[3][3], bool destinationCanvas[3][3]);
+    void copyPieceCanvas(const std::vector< std::vector<bool>> originCanvas, std::vector< std::vector<bool>> destinationCanvas);
+
+    int maxPieceColumn;
+    int maxPieceRow;
 
 public:
-    const int MAXPIECEROW=3, MAXPIECECOLUMN=3;
 
-    bool pieceCanvas[3][3];
+    std::vector<std::vector<bool>> pieceCanvas;
+
+    void createPiece (const int PieceColumnSize, const int PieceRowSize);
+    void createPiece (const int PieceColumnSize, const int PieceRowSize, const std::vector< std::vector<bool>> NewPieceCanvas);
 
     void rotateRight();
     void rotateLeft();

@@ -10,6 +10,7 @@
 #include "Board.h"
 #include "Piece.h"
 #include "stdio.h"
+#include <vector>
 
 SCENARIO("Board is empty.", "[TetrisFallingBlocks]"){
 
@@ -160,17 +161,17 @@ SCENARIO("When another block falls inside another.", "[TetrisFallingBlocks]"){
 SCENARIO("Having a piece to Rotate.", "[TetrisRotatingPiecesOfBlocks]"){
 
     GIVEN("A 3 by 3 piece"){
+        std::vector<std::vector<bool>> pieceRepresentation;
+
+        pieceRepresentation = {
+                                {0,1,0},
+                                {0,1,0},
+                                {0,0,0}
+                              };
+
         Piece piece;
-        bool pieceRepresentation [3][3];
-        pieceRepresentation[0][0] = false;
-        pieceRepresentation[1][0] = true;
-        pieceRepresentation[2][0] = false;
-        pieceRepresentation[0][1] = false;
-        pieceRepresentation[1][1] = true;
-        pieceRepresentation[2][1] = false;
-        pieceRepresentation[0][2] = false;
-        pieceRepresentation[1][2] = false;
-        pieceRepresentation[2][2] = false;
+
+        piece.createPiece(3,3, pieceRepresentation);
 
         WHEN("a piece contains two blocks."){
             THEN ("The piece looks like two blocks."){
@@ -189,21 +190,27 @@ SCENARIO("Having a piece to Rotate.", "[TetrisRotatingPiecesOfBlocks]"){
 SCENARIO("Rotate piece right.", "[TetrisRotatingPiecesOfBlocks]"){
 
     GIVEN("A 3 by 3 piece"){
+
+        std::vector<std::vector<bool>> pieceRepresentation;
+
+        pieceRepresentation = {
+                                {0,1,0},
+                                {0,1,0},
+                                {0,0,0}
+                              };
+
         Piece piece;
-        bool pieceRepresentation [3][3];
-        pieceRepresentation[0][0] = false;
-        pieceRepresentation[1][0] = false;
-        pieceRepresentation[2][0] = false;
-        pieceRepresentation[0][1] = false;
-        pieceRepresentation[1][1] = true;
-        pieceRepresentation[2][1] = true;
-        pieceRepresentation[0][2] = false;
-        pieceRepresentation[1][2] = false;
-        pieceRepresentation[2][2] = false;
 
+        piece.createPiece(3,3, pieceRepresentation);
 
-        WHEN("I rotate the piece."){
+        WHEN("I rotate the piece to the right."){
             piece.rotateRight();
+
+            pieceRepresentation = {
+                                    {0,0,0},
+                                    {0,1,1},
+                                    {0,0,0}
+                                  };
 
             THEN ("Piece looks rotated."){
 
@@ -218,21 +225,20 @@ SCENARIO("Rotate piece right.", "[TetrisRotatingPiecesOfBlocks]"){
         }
     }
 }
+
 SCENARIO("Rotate piece left.", "[TetrisRotatingPiecesOfBlocks]"){
 
     GIVEN("A 3 by 3 piece"){
         Piece piece;
-        bool pieceRepresentation [3][3];
-        pieceRepresentation[0][0] = false;
-        pieceRepresentation[1][0] = false;
-        pieceRepresentation[2][0] = false;
-        pieceRepresentation[0][1] = true;
-        pieceRepresentation[1][1] = true;
-        pieceRepresentation[2][1] = false;
-        pieceRepresentation[0][2] = false;
-        pieceRepresentation[1][2] = false;
-        pieceRepresentation[2][2] = false;
+        piece.createPiece(3,3);
 
+        std::vector<std::vector<bool>> pieceRepresentation;
+
+        pieceRepresentation = {
+                                {0,0,0},
+                                {1,1,0},
+                                {0,0,0}
+                              };
 
         WHEN("I rotate the piece."){
             piece.rotateLeft();
@@ -250,4 +256,59 @@ SCENARIO("Rotate piece left.", "[TetrisRotatingPiecesOfBlocks]"){
         }
     }
 }
+
+//SCENARIO("Having a piece of 5 x 5 blocks.", "[TetrisRotatingPiecesOfBlocks]"){
+
+//    GIVEN("A 5 by 5 piece"){
+//        Piece piece;
+
+//        bool pieceRepresentation [5][5];
+
+//        pieceRepresentation[0][0] = false;
+//        pieceRepresentation[1][0] = false;
+//        pieceRepresentation[2][0] = false;
+//        pieceRepresentation[3][0] = false;
+//        pieceRepresentation[4][0] = false;
+
+//        pieceRepresentation[0][1] = false;
+//        pieceRepresentation[1][1] = false;
+//        pieceRepresentation[2][1] = true;
+//        pieceRepresentation[3][1] = true;
+//        pieceRepresentation[4][1] = true;
+
+//        pieceRepresentation[0][2] = false;
+//        pieceRepresentation[1][2] = false;
+//        pieceRepresentation[2][2] = true;
+//        pieceRepresentation[3][2] = true;
+//        pieceRepresentation[4][2] = false;
+
+//        pieceRepresentation[0][3] = false;
+//        pieceRepresentation[1][3] = false;
+//        pieceRepresentation[2][3] = true;
+//        pieceRepresentation[3][3] = false;
+//        pieceRepresentation[4][3] = false;
+
+//        pieceRepresentation[0][4] = false;
+//        pieceRepresentation[1][4] = false;
+//        pieceRepresentation[2][4] = false;
+//        pieceRepresentation[3][4] = false;
+//        pieceRepresentation[4][4] = false;
+
+
+//        WHEN("I create the piece."){
+//            piece.rotateLeft();
+
+//            THEN ("Piece has many blocks."){
+
+//                for (int column = 0; column < 5; column++){
+//                    for (int row = 0; row < 5; row++) {
+//                        REQUIRE(piece.pieceCanvas[column][row] == pieceRepresentation[column][row]);
+//                    }
+//                }
+
+//            }
+
+//        }
+//    }
+//}
 
