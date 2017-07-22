@@ -264,58 +264,74 @@ SCENARIO("Rotate piece left.", "[TetrisRotatingPiecesOfBlocks]"){
     }
 }
 
-//SCENARIO("Having a piece of 5 x 5 blocks.", "[TetrisRotatingPiecesOfBlocks]"){
+SCENARIO("Rotate 5x5 piece right", "[TetrisRotatingPiecesOfBlocks]"){
 
-//    GIVEN("A 5 by 5 piece"){
-//        Piece piece;
+    GIVEN("A 5 by 5 piece"){
+        std::vector<std::vector<bool>> pieceRepresentation;
 
-//        bool pieceRepresentation [5][5];
+        pieceRepresentation = {
+                                {0,0,1,1,1},
+                                {0,0,1,1,0},
+                                {0,0,1,0,0},
+                                {0,0,0,0,0},
+                                {0,0,0,0,0}
+                              };
 
-//        pieceRepresentation[0][0] = false;
-//        pieceRepresentation[1][0] = false;
-//        pieceRepresentation[2][0] = false;
-//        pieceRepresentation[3][0] = false;
-//        pieceRepresentation[4][0] = false;
+        Piece piece;
+        piece.createPiece(5,5, pieceRepresentation);
 
-//        pieceRepresentation[0][1] = false;
-//        pieceRepresentation[1][1] = false;
-//        pieceRepresentation[2][1] = true;
-//        pieceRepresentation[3][1] = true;
-//        pieceRepresentation[4][1] = true;
+        WHEN("I rotate the piece to the right."){
+            piece.rotateRight();
 
-//        pieceRepresentation[0][2] = false;
-//        pieceRepresentation[1][2] = false;
-//        pieceRepresentation[2][2] = true;
-//        pieceRepresentation[3][2] = true;
-//        pieceRepresentation[4][2] = false;
+            pieceRepresentation = {
+                                    {0,0,0,0,0},
+                                    {0,0,0,0,0},
+                                    {0,0,1,1,1},
+                                    {0,0,0,1,1},
+                                    {0,0,0,0,1}
+                                  };
+            THEN ("Piece has many blocks."){
 
-//        pieceRepresentation[0][3] = false;
-//        pieceRepresentation[1][3] = false;
-//        pieceRepresentation[2][3] = true;
-//        pieceRepresentation[3][3] = false;
-//        pieceRepresentation[4][3] = false;
+                for (int column = 0; column < 5; column++){
+                    for (int row = 0; row < 5; row++) {
+                        REQUIRE(piece.pieceCanvas[column][row] == pieceRepresentation[column][row]);
+                    }
+                }
 
-//        pieceRepresentation[0][4] = false;
-//        pieceRepresentation[1][4] = false;
-//        pieceRepresentation[2][4] = false;
-//        pieceRepresentation[3][4] = false;
-//        pieceRepresentation[4][4] = false;
+            }
 
+        }
+    }
+}
 
-//        WHEN("I create the piece."){
-//            piece.rotateLeft();
+SCENARIO("Having a piece of 5 x 5 blocks.", "[TetrisRotatingPiecesOfBlocks]"){
 
-//            THEN ("Piece has many blocks."){
+    GIVEN("A 5 by 5 piece"){
+        std::vector<std::vector<bool>> pieceRepresentation;
 
-//                for (int column = 0; column < 5; column++){
-//                    for (int row = 0; row < 5; row++) {
-//                        REQUIRE(piece.pieceCanvas[column][row] == pieceRepresentation[column][row]);
-//                    }
-//                }
+        pieceRepresentation = {
+                                {0,0,1,1,1},
+                                {0,0,1,1,0},
+                                {0,0,1,0,0},
+                                {0,0,0,0,0},
+                                {0,0,0,0,0}
+                              };
 
-//            }
+        Piece piece;
+        piece.createPiece(5,5, pieceRepresentation);
 
-//        }
-//    }
-//}
+        WHEN("I create the piece."){
 
+            THEN ("Piece has many blocks."){
+
+                for (int column = 0; column < 5; column++){
+                    for (int row = 0; row < 5; row++) {
+                        REQUIRE(piece.pieceCanvas[column][row] == pieceRepresentation[column][row]);
+                    }
+                }
+
+            }
+
+        }
+    }
+}
