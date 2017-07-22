@@ -229,19 +229,26 @@ SCENARIO("Rotate piece right.", "[TetrisRotatingPiecesOfBlocks]"){
 SCENARIO("Rotate piece left.", "[TetrisRotatingPiecesOfBlocks]"){
 
     GIVEN("A 3 by 3 piece"){
-        Piece piece;
-        piece.createPiece(3,3);
 
         std::vector<std::vector<bool>> pieceRepresentation;
 
         pieceRepresentation = {
-                                {0,0,0},
-                                {1,1,0},
+                                {0,1,0},
+                                {0,1,0},
                                 {0,0,0}
                               };
 
+        Piece piece;
+        piece.createPiece(3,3, pieceRepresentation);
+
         WHEN("I rotate the piece."){
             piece.rotateLeft();
+
+            pieceRepresentation = {
+                                    {0,0,0},
+                                    {1,1,0},
+                                    {0,0,0}
+                                  };
 
             THEN ("Piece looks rotated."){
 
