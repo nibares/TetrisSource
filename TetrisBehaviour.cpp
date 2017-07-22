@@ -264,6 +264,39 @@ SCENARIO("Rotate piece left.", "[TetrisRotatingPiecesOfBlocks]"){
     }
 }
 
+
+SCENARIO("Having a piece of 5 x 5 blocks.", "[TetrisRotatingPiecesOfBlocks]"){
+
+    GIVEN("A 5 by 5 piece"){
+        std::vector<std::vector<bool>> pieceRepresentation;
+
+        pieceRepresentation = {
+                                {0,0,1,1,1},
+                                {0,0,1,1,0},
+                                {0,0,1,0,0},
+                                {0,0,0,0,0},
+                                {0,0,0,0,0}
+                              };
+
+        Piece piece;
+        piece.createPiece(5,5, pieceRepresentation);
+
+        WHEN("I create the piece."){
+
+            THEN ("Piece has many blocks."){
+
+                for (int column = 0; column < 5; column++){
+                    for (int row = 0; row < 5; row++) {
+                        REQUIRE(piece.pieceCanvas[column][row] == pieceRepresentation[column][row]);
+                    }
+                }
+
+            }
+
+        }
+    }
+}
+
 SCENARIO("Rotate 5x5 piece right", "[TetrisRotatingPiecesOfBlocks]"){
 
     GIVEN("A 5 by 5 piece"){
@@ -290,7 +323,7 @@ SCENARIO("Rotate 5x5 piece right", "[TetrisRotatingPiecesOfBlocks]"){
                                     {0,0,0,1,1},
                                     {0,0,0,0,1}
                                   };
-            THEN ("Piece has many blocks."){
+            THEN ("Piece has been rotated right."){
 
                 for (int column = 0; column < 5; column++){
                     for (int row = 0; row < 5; row++) {
@@ -304,7 +337,7 @@ SCENARIO("Rotate 5x5 piece right", "[TetrisRotatingPiecesOfBlocks]"){
     }
 }
 
-SCENARIO("Having a piece of 5 x 5 blocks.", "[TetrisRotatingPiecesOfBlocks]"){
+SCENARIO("Rotate 5x5 piece left", "[TetrisRotatingPiecesOfBlocks]"){
 
     GIVEN("A 5 by 5 piece"){
         std::vector<std::vector<bool>> pieceRepresentation;
@@ -320,9 +353,17 @@ SCENARIO("Having a piece of 5 x 5 blocks.", "[TetrisRotatingPiecesOfBlocks]"){
         Piece piece;
         piece.createPiece(5,5, pieceRepresentation);
 
-        WHEN("I create the piece."){
+        WHEN("I rotate the piece to the left."){
+            piece.rotateLeft();
 
-            THEN ("Piece has many blocks."){
+            pieceRepresentation = {
+                                    {1,0,0,0,0},
+                                    {1,1,0,0,0},
+                                    {1,1,1,0,0},
+                                    {0,0,0,0,0},
+                                    {0,0,0,0,0}
+                                  };
+            THEN ("Piece has been rotated left."){
 
                 for (int column = 0; column < 5; column++){
                     for (int row = 0; row < 5; row++) {

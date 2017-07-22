@@ -1,3 +1,6 @@
 *.o
 .qmake.stash
 TetrisTDD
+*.pro
+*.pro.user
+Makefile
