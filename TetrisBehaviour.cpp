@@ -9,6 +9,7 @@
 #include "catch.hpp"
 #include "Board.h"
 #include "Piece.h"
+#include "Tetromino.h"
 #include "stdio.h"
 #include <vector>
 
@@ -375,4 +376,33 @@ SCENARIO("Rotate 5x5 piece left", "[TetrisRotatingPiecesOfBlocks]"){
 
         }
     }
+}
+
+SCENARIO("Tetrominoes are immutable", "[TetrisRotatingTetrominoes]"){
+
+    GIVEN("Creating any shape"){
+
+        std::vector<std::vector<bool>> originalShape;
+
+        Tetromino shape;
+
+        WHEN("I try to modify the shape"){
+            originalShape = shape.get_T_SHAPE();
+
+
+            THEN ("Shape is immutable."){
+                    REQUIRE(originalShape == shape.get_T_SHAPE());
+
+                    }
+//            AND_THEN("Even if I rotate it to the right."){
+//                shape.rotateLeft();
+//                    REQUIRE(originalShape == shape);
+//                }
+
+//            AND_THEN("Even if I rotate it to the left."){
+//                shape.rotateLeft();
+//                    REQUIRE(originalShape == shape);
+                }
+
+         }
 }
