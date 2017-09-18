@@ -1,3 +1,11 @@
+#Ignore build and lib dirs
+build
+lib/*
+
+#Ignore any executable
+bin/*
+
+#Ignore any other file
 *.o
 .qmake.stash
 TetrisTDD

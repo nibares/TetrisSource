@@ -1,7 +1,7 @@
 #ifndef TETROMINO_H
 #define TETROMINO_H
 
-//#include "Piece.h"
+#include "Piece.h"
 
 class Tetromino
 {

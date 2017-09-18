@@ -380,7 +380,7 @@ SCENARIO("Rotate 5x5 piece left", "[TetrisRotatingPiecesOfBlocks]"){
 
 SCENARIO("Tetrominoes are immutable", "[TetrisRotatingTetrominoes]"){
 
-    GIVEN("Creating any shape"){
+/*    GIVEN("Creating any shape"){
 
         std::vector<std::vector<bool>> originalShape;
 
@@ -404,5 +404,5 @@ SCENARIO("Tetrominoes are immutable", "[TetrisRotatingTetrominoes]"){
 //                    REQUIRE(originalShape == shape);
                 }
 
-         }
+         }  */
 }
