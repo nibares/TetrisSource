@@ -6,9 +6,11 @@ lib/*
 bin/*
 
 #Ignore any other file
-*.o
-.qmake.stash
-TetrisTDD
-*.pro
-*.pro.user
-Makefile
+tmp/*
+
+#*.o
+# .qmake.stash
+# TetrisTDD
+# *.pro
+# *.pro.user
+# Makefile
