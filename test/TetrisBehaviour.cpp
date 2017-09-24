@@ -7,9 +7,9 @@
 
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
-#include "Board.h"
-#include "Piece.h"
-#include "Tetromino.h"
+#include "../include/Board.h"
+#include "../include/Piece.h"
+#include "../include/Tetromino.h"
 #include "stdio.h"
 #include <vector>
 
@@ -40,13 +40,7 @@ SCENARIO("There are no falling blocks in the board.", "[TetrisFallingBlocks]"){
         }
     }
 }
-
-SCENARIO("After droping a block, the block falls.", "[TetrisFallingBlocks]"){
-
-    GIVEN("A 3 by 3 board"){
-        Board board;
-
-        WHEN("a 1 by 1 block is dropped to the board"){
+SCENARIO("After droping a block, the block falls.", "[TetrisFallingBlocks]"){ GIVEN("A 3 by 3 board"){ Board board; WHEN("a 1 by 1 block is dropped to the board"){
             board.drop('X');
 
             THEN ("The block is falling."){
@@ -380,7 +374,7 @@ SCENARIO("Rotate 5x5 piece left", "[TetrisRotatingPiecesOfBlocks]"){
 
 SCENARIO("Tetrominoes are immutable", "[TetrisRotatingTetrominoes]"){
 
-/*    GIVEN("Creating any shape"){
+   GIVEN("Creating any shape"){
 
         std::vector<std::vector<bool>> originalShape;
 
@@ -392,17 +386,18 @@ SCENARIO("Tetrominoes are immutable", "[TetrisRotatingTetrominoes]"){
 
             THEN ("Shape is immutable."){
                     REQUIRE(originalShape == shape.get_T_SHAPE());
-
                     }
-//            AND_THEN("Even if I rotate it to the right."){
-//                shape.rotateLeft();
-//                    REQUIRE(originalShape == shape);
-//                }
 
-//            AND_THEN("Even if I rotate it to the left."){
-//                shape.rotateLeft();
-//                    REQUIRE(originalShape == shape);
-                }
+            AND_THEN("Even if I rotate it to the right."){
+                    shape.rotateRight();
+                    REQUIRE(originalShape == shape.get_T_SHAPE());
+                    }
 
-         }  */
+            AND_THEN("Even if I rotate it to the left."){
+                   shape.rotateLeft();
+                   REQUIRE(originalShape == shape.get_T_SHAPE());
+                   }
+
+         }  
+    }
 }

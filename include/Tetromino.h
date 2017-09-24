@@ -36,13 +36,14 @@ private:
 
 public:
     Tetromino();
-
+    ~Tetromino();
     const std::vector<std::vector<bool>>& get_T_SHAPE() const;
     const std::vector<std::vector<bool>>& get_O_SHAPE() const;
     const std::vector<std::vector<bool>>& get_I_SHAPE() const;
     const std::vector<std::vector<bool>>& get_L_SHAPE() const;
     const std::vector<std::vector<bool>>& get_Z_SHAPE() const;
-
+    const std::vector<std::vector<bool>>& rotateLeft() const;
+    const std::vector<std::vector<bool>>& rotateRight() const;
 };
 
 #endif // TETROMINO_H
