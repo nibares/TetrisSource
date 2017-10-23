@@ -401,3 +401,58 @@ SCENARIO("Tetrominoes are immutable", "[TetrisRotatingTetrominoes]"){
          }  
     }
 }
+
+SCENARIO("The T-Shape Tetromino", "[TetrisRotatingTetrominoes]"){
+
+    GIVEN("Creating a T-Shape Tetromino"){
+        
+        Tetromino t_shape;
+
+        WHEN("I visualize it."){
+         std::vector<std::vector<bool>> originalShape;       
+           originalShape = {
+                                {1,1,1},
+                                {0,1,0},
+                                {0,0,0}
+                           };
+            THEN("Shape is like"){
+                REQUIRE(originalShape==t_shape.get_T_SHAPE());
+            } 
+        }
+    }
+
+}
+
+SCENARIO("T-Shape Tetromino can be rotated right 3 times", "[TetrisRotatingTetrominoes]"){
+
+    GIVEN("Creating a T-Shape Tetromino"){
+        
+        Tetromino t_shape;
+
+        WHEN("I rotate it for the first time to the right."){
+           std::vector<std::vector<bool>> originalShape, firstRotationRight; 
+           originalShape = {
+                                {1,1,1},
+                                {0,1,0},
+                                {0,0,0}
+                           };
+           firstRotationRight = {
+                                    {0,0,1},
+                                    {0,1,1}, 
+                                    {0,0,1}, 
+           };
+            THEN("Shape is like"){
+                REQUIRE(firstRotationRight == t_shape.rotateRight());
+            } 
+        } 
+        
+        AND_WHEN("I rotated for the second time to the right."){
+        
+        }
+       
+        AND_WHEN("I rotated for the second time to the right."){
+        
+        } 
+    }
+
+}

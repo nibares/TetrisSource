@@ -3,6 +3,8 @@
 Tetromino::Tetromino()
 {
 
+Tetromino::Tetromino()
+{
 };
 
 Tetromino::~Tetromino(){

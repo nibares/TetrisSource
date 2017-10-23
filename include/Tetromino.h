@@ -33,9 +33,11 @@ private:
                                                         {0,1,1},
                                                         {0,0,0}
                                                     };
+    std::vector<std::vector<bool>> currentShape;
 
 public:
     Tetromino();
+    Tetromino(enum aShape {T_SHAPE});
     ~Tetromino();
     const std::vector<std::vector<bool>>& get_T_SHAPE() const;
     const std::vector<std::vector<bool>>& get_O_SHAPE() const;
