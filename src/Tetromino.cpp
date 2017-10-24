@@ -2,9 +2,12 @@
 
 Tetromino::Tetromino()
 {
+};
 
-Tetromino::Tetromino()
+Tetromino::Tetromino(Shape)
 {
+    currentShape = get_T_SHAPE();
+    
 };
 
 Tetromino::~Tetromino(){

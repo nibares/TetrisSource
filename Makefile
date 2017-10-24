@@ -9,7 +9,7 @@ TARGET := bin/TetrisTDD		# Here we should set the app name
 SRCEXT := cpp
 SOURCES := $(shell find $(SRCDIR) -type f -name *.$(SRCEXT))
 OBJECTS := $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(SOURCES:.$(SRCEXT)=.o))
-CFLAGS := -g #-Wall		# Flags for compiler
+CFLAGS := -g -Wall -O		# Flags for compiler
 #LIB := -L lib
 INC := -I include
 

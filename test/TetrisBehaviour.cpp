@@ -450,7 +450,7 @@ SCENARIO("T-Shape Tetromino can be rotated right 3 times", "[TetrisRotatingTetro
         
         }
        
-        AND_WHEN("I rotated for the second time to the right."){
+        AND_WHEN("I rotated for the third time to the right."){
         
         } 
     }
