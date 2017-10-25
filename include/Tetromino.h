@@ -33,9 +33,11 @@ private:
                                                         {0,1,1},
                                                         {0,0,0}
                                                     };
-    std::vector<std::vector<bool>> currentShape;
+    // std::vector<std::vector<bool>> currentShape;
 
 public:
+    
+    Piece currentStatePiece;
     enum Shape {TSHAPE, OSHAPE, ISHAPE, LSHAPE, ZSHAPE};
     Tetromino();
     Tetromino(Shape);
@@ -46,7 +48,7 @@ public:
     const std::vector<std::vector<bool>>& get_L_SHAPE() const;
     const std::vector<std::vector<bool>>& get_Z_SHAPE() const;
     const std::vector<std::vector<bool>>& rotateLeft() const;
-    const std::vector<std::vector<bool>>& rotateRight() const;
+    const std::vector<std::vector<bool>>& rotateRight();
 };
 
 #endif // TETROMINO_H

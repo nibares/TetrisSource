@@ -378,7 +378,7 @@ SCENARIO("Tetrominoes are immutable", "[TetrisRotatingTetrominoes]"){
 
         std::vector<std::vector<bool>> originalShape;
 
-        Tetromino shape;
+        Tetromino shape(Tetromino::TSHAPE);
 
         WHEN("I try to modify the shape"){
             originalShape = shape.get_T_SHAPE();
@@ -406,7 +406,7 @@ SCENARIO("The T-Shape Tetromino", "[TetrisRotatingTetrominoes]"){
 
     GIVEN("Creating a T-Shape Tetromino"){
         
-        Tetromino t_shape;
+        Tetromino t_shape(Tetromino::TSHAPE);
 
         WHEN("I visualize it."){
          std::vector<std::vector<bool>> originalShape;       
@@ -426,8 +426,8 @@ SCENARIO("The T-Shape Tetromino", "[TetrisRotatingTetrominoes]"){
 SCENARIO("T-Shape Tetromino can be rotated right 3 times", "[TetrisRotatingTetrominoes]"){
 
     GIVEN("Creating a T-Shape Tetromino"){
-        
-        Tetromino t_shape;
+         
+        Tetromino t_shape(Tetromino::TSHAPE); 
 
         WHEN("I rotate it for the first time to the right."){
            std::vector<std::vector<bool>> originalShape, firstRotationRight; 

@@ -4,10 +4,11 @@ Tetromino::Tetromino()
 {
 };
 
-Tetromino::Tetromino(Shape)
+Tetromino::Tetromino(Shape aShape)
 {
-    currentShape = get_T_SHAPE();
-    
+    if (aShape == Tetromino::Shape::TSHAPE){
+        currentStatePiece.createPiece(3,3,Tetromino::get_T_SHAPE());
+    } 
 };
 
 Tetromino::~Tetromino(){
@@ -37,6 +38,8 @@ const std::vector<std::vector<bool>>& Tetromino::rotateLeft()  const{
     return T_SHAPE;
 };
 
-const std::vector<std::vector<bool>>& Tetromino::rotateRight()  const{
-    return T_SHAPE;
+const std::vector<std::vector<bool>>& Tetromino::rotateRight()  {
+    currentStatePiece.rotateRight();
+    
+    return currentStatePiece.pieceCanvas; 
 };
