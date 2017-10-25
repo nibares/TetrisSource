@@ -428,26 +428,41 @@ SCENARIO("T-Shape Tetromino can be rotated right 3 times", "[TetrisRotatingTetro
     GIVEN("Creating a T-Shape Tetromino"){
          
         Tetromino t_shape(Tetromino::TSHAPE); 
-
-        WHEN("I rotate it for the first time to the right."){
-           std::vector<std::vector<bool>> originalShape, firstRotationRight; 
-           originalShape = {
+ 
+        std::vector<std::vector<bool>> originalShape, firstRotationRight, secondRotationRight; 
+        originalShape = {
                                 {1,1,1},
                                 {0,1,0},
                                 {0,0,0}
-                           };
-           firstRotationRight = {
+                        };
+        
+        firstRotationRight = {
                                     {0,0,1},
                                     {0,1,1}, 
                                     {0,0,1}, 
-           };
-            THEN("Shape is like"){
-                REQUIRE(firstRotationRight == t_shape.rotateRight());
+                             };
+        secondRotationRight = {
+                                    {0,0,0},
+                                    {0,1,0}, 
+                                    {1,1,1}, 
+                             };
+
+        WHEN("I rotate it for the first time to the right."){
+          
+           t_shape.rotateRight();
+           
+           THEN("Shape is like"){
+                REQUIRE(firstRotationRight == t_shape.currentStatePiece.pieceCanvas);
             } 
         } 
         
         AND_WHEN("I rotated for the second time to the right."){
-        
+            
+            t_shape.rotateRight();
+           
+            THEN("Shape should be like"){
+                REQUIRE(secondRotationRight==t_shape.currentStatePiece.pieceCanvas); 
+            } 
         }
        
         AND_WHEN("I rotated for the third time to the right."){
